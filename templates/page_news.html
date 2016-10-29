@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>سایت جهان نیوز</title>
+
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/bootstrap-rtl.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/style.css"/>
+    <link rel="stylesheet" href="../static/css/common.css"/>
+    <link rel="stylesheet" href="../static/css/bootstrap-select.css"/>
+
+</head>
+
+<body style="background: url(/static/img/55.jpg); background-size: 100%;">
+<div class="container-fluid">
+    <div class="row" id="header">
+
+        <!----------------------------------------------------------------mobile-size------------------------------------------------------------------------------------------------------->
+        <div class="row hidden-lg hidden-md hidden-sm ">
+            <div class="col-xs-12">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+
+                        <div class="navbar-header">
+                            
+                            <span class="navbar-brand yekan_">سایت جهان نیوز</span>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!----------------------------------------------------------------end-mob-size------------------------------------------------------------------------------------------------------->
+        <div class="col-lg-9 col-md-10 col-sm-8 col-xs-12">
+            <div class="hidden-xs">
+                <img id="logo" class=" img-rounded pull-right" src="../static/img/leaf-book-icon-LRG.png" width="120px"
+                     height="75px" alt=""/>
+            </div>
+            <span id="T-logo" class=" pull-right hidden-sm hidden-xs yekan_">سایت جهان نیوز</span>
+            <span id="S-logo" class="pull-right hidden-lg hidden-md hidden-xs yekan_" >سایت جهان نیوز</span>
+        </div>        
+    </div>
+
+    <!-----------------------------------------------------------main------------------------------------------------------->
+    		<div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1  col-sm-offset-1 col-xs-offset-0">
+                <div class="panel panel-content">
+                    <div class="panel-heading yekan_">{{ news['title'] }}<div class="pull-left">{{ news['time'] }} - {{ news['date'] }}</div></div>
+                    <div class=" panel-body">
+                        <img style="max-width: 1040px;" alt={{ news['summary'] }} src={{ news['image'] }} class="pull-left">
+                        {% raw news['body'] %}
+                        <a href={{ news['source_link'] }}>{{ news['source_name'] }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="../static/js/jquery-1.9.1.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/bootstrap-select.js"></script>
+
+<!--<script type="text/javascript">-->
+    <!--$(document).on('click', '.state_btn',function(){-->
+        <!--console.log("hi")-->
+        <!--var state_id = $(".state_select option:selected").val();-->
+            <!--$.ajax({-->
+                <!--url: '/',-->
+                <!--type: 'POST',-->
+                <!--data: {id: state_id},-->
+                <!--success: function (data) {-->
+                    <!--if (data) {-->
+                        <!--var news = data['data']['res'];-->
+                        <!--var s;-->
+                        <!--for (var News = 0; News < news.length; News++) {-->
+                            <!--var dic = JSON.parse(news[News]);-->
+                            <!--s+= "<a href=show/"+dic['id']+"><h4>"+dic['title']+"</h4></a>";-->
+                        <!--}-->
+                        <!--$(".state_news_").html(s);-->
+                    <!--}-->
+                <!--},-->
+                <!--error: function (e) {-->
+                    <!--console.log(e);-->
+                <!--},-->
+                <!--complete: function () {-->
+                <!--}-->
+            <!--})-->
+    <!--})-->
+
+<!--</script>-->
+</body>
+</html>

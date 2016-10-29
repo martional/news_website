@@ -1,0 +1,232 @@
+﻿<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>سایت جهان نیوز</title>
+
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/css/bootstrap-rtl.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/style.css"/>
+    <link rel="stylesheet" href="static/css/common.css"/>
+    <link rel="stylesheet" href="static/css/bootstrap-select.css"/>
+    <link rel="stylesheet" href="static/css/pagination.css"/>
+    <link rel="stylesheet" href="static/css/jquery-ui.css"/>
+
+
+
+
+</head>
+
+<body style="background: url(/static/img/55.jpg); background-size: 100%;">
+<div class="container-fluid">
+    <div class="row" id="header">
+
+        <!----------------------------------------------------------------mobile-size------------------------------------------------------------------------------------------------------->
+        <div class="row hidden-lg hidden-md hidden-sm ">
+            <div class="col-xs-12">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+
+                        <div class="navbar-header">
+                            
+                            <span class="navbar-brand yekan_">سایت جهان نیوز</span>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!----------------------------------------------------------------end-mob-size------------------------------------------------------------------------------------------------------->
+        <div class="col-lg-9 col-md-10 col-sm-8 col-xs-12">
+            <div class="hidden-xs">
+                <img id="logo" class=" img-rounded pull-right" src="static/img/leaf-book-icon-LRG.png" width="120px"
+                     height="75px" alt=""/>
+            </div>
+            <span id="T-logo" class=" pull-right hidden-sm hidden-xs yekan_">سایت جهان نیوز</span>
+            <span id="S-logo" class="pull-right hidden-lg hidden-md hidden-xs yekan_" >سایت جهان نیوز</span>
+        </div>        
+    </div>
+
+    <!-----------------------------------------------------------main------------------------------------------------------->
+    <div class="container ">
+        <div class="row" >
+            <div class="col-md-4  col-md-offset-1 ">
+                <div class="panel panel-content">
+                    <div class="panel-heading yekan_">دسته بندی اخبار</div>
+                    <div class="panel-body">
+                        <div class="form-horizontal ">
+                            <div class="form-group">
+								<label class="col-lg-4 col-md-2 control-label yekan_" >نام استان:</label>
+								<div class="col-lg-5 col-md-3 col-sm-3 col-xs-5" pull-right>
+                                    <select class="bootstrap-select selectpicker  form-control state_select "
+                                            data-live-search="true">
+                                        <option>
+                                            انتخاب استان
+                                        </option>
+                                        {% for state in states %}
+                                            <option value="{{ state['id'] }}"{%  if state['id'] ==15 %} selected="selected"{% end if %}>{{ state['name'] }}</option>
+                                        {% end for %}
+                                    </select>
+								</div>
+                            </div>
+
+                            <!-- Button (Double) -->
+                            <button class="btn btn-success pull-left state_btn">نمایش</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<div class=" col-md-4  col-md-offset-2 ">
+                <div class="panel panel-content">
+                    <div class="panel-heading yekan_">دسته بندی اخبار</div>
+                    <div class="panel-body">
+                        <div class="form-horizontal ">
+                            <div class="form-group">
+								<label class="col-lg-4 col-md-2 control-label yekan_">نام دسته:</label>
+								<div class="col-lg-5 col-md-3 col-sm-3 col-xs-5">
+                                    <select class="bootstrap-select selectpicker  form-control cat_select"
+                                            data-live-search="true">
+                                        <option>
+                                            انتخاب دسته
+                                        </option>
+                                        {% for category in categoris %}
+                                            {%  if category['id']==1 %}
+                                                <option value="{{ category['id'] }}"selected="selected">{{ category['name'] }}</option>
+                                            {% else %}
+                                                <option value="{{ category['id'] }}">{{ category['name'] }}</option>
+                                            {% end if %}
+                                        {% end for %}
+                                    </select>
+								</div>
+                            </div>
+
+                            <!-- Button (Double) -->
+                            <button class="btn btn-success pull-left cat_btn">نمایش</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-10 col-sm-10 col-xs-12 col-lg-offset-0  col-sm-offset-1 col-xs-offset-0">
+                <div class="panel panel-content">
+                    <div class="panel-heading yekan_">اخبار استان</div>
+                    <div class=" panel-body state_news_">
+                        {% for News in state_news %}
+                        <a href=news_page/{{News['id']}}><h4>{{News['title']}}:</h4>
+                            <p>{{News['summary']}}</p>
+                            <hr>
+                        </a>
+                        {% end for %}
+                        <div class="text-center">
+                            <ul class="pagination pagination-sm results_pages_adv">
+                                <li id="next" class="next"><a>بعدی</a></li>
+                                <li data-id="9" class="pagi"><a>9</a></li>
+                                <li data-id="8" class="pagi"><a>8</a></li>
+                                <li data-id="7" class="pagi"><a>7</a></li>
+                                <li data-id="6" class="pagi"><a>6</a></li>
+                                <li data-id="5" class="pagi"><a>5</a></li>
+                                <li data-id="4" class="pagi"><a>4</a></li>
+                                <li data-id="3" class="pagi"><a>3</a></li>
+                                <li data-id="2" class="pagi"><a>2</a></li>
+                                <li data-id="1" class="pagi"><a>1</a></li>
+                                <li data-id="back" class="back"><a>قبلی</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<div class="col-lg-6 col-md-10 col-sm-10 col-xs-12 col-lg-offset-0  col-sm-offset-1 col-xs-offset-0">
+                <div class="panel panel-content">
+                    <div class="panel-heading yekan_">اخبار دسته</div>
+                    <div class=" panel-body cat_news_">
+                        {% for News in news_cat %}
+                            <a href=news_page/{{News['id']}}><h4>{{News['title']}}:</h4>
+                                <p>{{News['summary']}}</p>
+                                <hr>
+                            </a>
+                        {% end for %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="static/js/jquery-1.9.1.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="static/js/bootstrap.min.js"></script>
+<script src="static/js/bootstrap-select.js"></script>
+
+<script type="text/javascript">
+    $(document).on('click', '.state_btn',function(){
+        var state_id = $(".state_select option:selected").val();
+        $.ajax({
+            url: '/',
+            type: 'POST',
+            data: {id: state_id},
+            success: function (data) {
+                if (data) {
+                    var news = data['data']['res'];
+                    var s = "";
+                    for (var News = 0; News < news.length; News++) {
+                        var dic = news[News];
+                        s += "<a href=" + "news_page/" + dic['id'] + "><h4>" + dic['title'] + "</h4>"
+                                +"<p>{{News['summary']}}</p>"
+                                +"</a>"
+                                +"<hr>";
+
+                    }
+                    $(".state_news_").html(s);
+                }
+            },
+            error: function (e) {
+                console.log(e);
+            },
+            complete: function () {
+            }
+        })
+    })
+
+</script>
+
+<script type="text/javascript">
+    $(document).on('click', '.cat_btn',function(){
+        var cat_id = $(".cat_select option:selected").val();
+        $.ajax({
+            url: '/',
+            type: 'POST',
+            data: {id: cat_id},
+            success: function (data) {
+                if (data) {
+                    var news = data['data']['res'];
+                    var s = "";
+                    for (var News = 0; News < news.length; News++) {
+                        var dic = news[News];
+                        s += "<a href=" + "news_page/" + dic['id'] + "><h4>" + dic['title'] + "</h4>"
+                                + "<p>{{News['summary']}}</p>"
+                                + "</a>"
+                                + "<hr>";
+                    }
+                    $(".cat_news_").html(s);
+                }
+            },
+            error: function (e) {
+                console.log(e);
+            },
+            complete: function () {
+            }
+        })
+
+    })
+
+</script>
+
+</body>
+</html>
